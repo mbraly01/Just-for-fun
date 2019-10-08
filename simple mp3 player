@@ -1,0 +1,34 @@
+'''
+Project: create on/off button for an mp3
+
+Need:
+GUI
+mp3 player
+'''
+
+#tkinter for GUI
+import tkinter as tk
+from pygame import mixer
+
+mixer.init()
+playlist ='C:\\Users\\Matt\\Desktop\\Brandy.mp3'
+
+def toggle(): 
+    if t_btn.config('text')[-1] == 'Off':
+        t_btn.config(text='On')
+        mixer.music.pause()
+        #cut the music
+    else:
+        t_btn.config(text='Off')
+        #turn on the music
+        mixer.music.unpause()
+            
+mixer.music.load(playlist)
+mixer.music.play()
+mixer.music.pause()
+
+root = tk.Tk()
+t_btn = tk.Button(text="On", width=12, command=toggle)
+t_btn.pack(pady=5)
+root.mainloop()
+        
