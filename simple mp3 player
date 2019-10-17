@@ -12,6 +12,16 @@ from pygame import mixer
 
 mixer.init()
 playlist ='C:\\Users\\Matt\\Desktop\\Brandy.mp3'
+p2 = 'C:\\Users\\Matt\\Desktop\\Grammy.mp3'
+
+def init_mixer(song):
+    mixer.quit()
+    print('done')
+    mixer.init()
+    mixer.music.load(song)
+    mixer.music.play()
+    mixer.music.pause()
+    print(song)
 
 def toggle(): 
     if t_btn.config('text')[-1] == 'Off':
@@ -22,13 +32,12 @@ def toggle():
         t_btn.config(text='Off')
         #turn on the music
         mixer.music.unpause()
-            
-mixer.music.load(playlist)
-mixer.music.play()
-mixer.music.pause()
 
 root = tk.Tk()
 t_btn = tk.Button(text="On", width=12, command=toggle)
 t_btn.pack(pady=5)
+r_btn = tk.Button(text="Brandy", width=12, command=init_mixer(playlist))
+r_btn.pack(pady=5)
+s_btn = tk.Button(text="Grammy", width=12, command=init_mixer(p2))
+s_btn.pack(pady=5)
 root.mainloop()
-        
